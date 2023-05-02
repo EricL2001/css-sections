@@ -1,0 +1,113 @@
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*only works if system is set to dark mode */
+html {
+    color-scheme: dark light;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.wrapper {
+    max-width: 50rem;
+    margin-inline: auto; /* center across page */
+    padding: 1rem; /* padding when viewport gets small */
+}
+
+.site-title {
+    font-size: 4rem;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.25rem;
+}
+
+section {
+    padding-block: 5rem;
+}
+
+.diagonal {
+    position: relative;
+    isolation: isolate;
+}
+
+.diagonal::after {
+    content: ''; /*needed for pseudo */
+    background-image: 
+        linear-gradient(
+            45deg,
+            #12c2e9,
+            #c471ed,
+            #f64f59
+        );
+    position: absolute;
+    z-index: -1;
+    inset: 0;  /* short hand for top,bottom,left,right */
+    transform: skewY(-5deg); /*rotates section -5 degrees on y-axis */
+}
+h1 {
+    color: white;
+    -webkit-text-stroke: 2px #c471ed;
+}
+
+.sawblade {
+    position: relative;
+    background: 
+        linear-gradient(
+            to right,
+            #fdc830,
+            #f37335
+        );
+}
+
+.sawblade::before,
+.sawblade::after {
+    content: ''; /* needed for pseudo */
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background: white;
+    
+    /* saw blade SVG created with https://yqnn.github.io/svg-path-editor/ */
+    -webkit-mask-image: url('assets/triangle.svg');
+}
+
+
+.sawblade::before {
+    top: 0;
+}
+
+.sawblade::after {
+    bottom: 0;
+    transform: rotate(.5turn);
+}
+
+/* mask created with https://css-generators.com/wavy-shapes/ */
+.waves {
+    background: 
+        linear-gradient(
+            to right,
+            #0575e6,
+            #00f260
+        );
+
+        
+        --mask:
+              radial-gradient(39.05px at 50% 55.00px,#000 99%,#0000 101%) calc(50% - 50px) 0/100px 51% repeat-x,
+              radial-gradient(39.05px at 50% -30px,#0000 99%,#000 101%) 50% 25px/100px calc(51% - 25px) repeat-x,
+              radial-gradient(39.05px at 50% calc(100% - 55.00px),#000 99%,#0000 101%) calc(50% - 50px) 100%/100px 51% repeat-x,
+              radial-gradient(39.05px at 50% calc(100% + 30.00px),#0000 99%,#000 101%) 50% calc(100% - 25px)/100px calc(51% - 25px) repeat-x;
+            -webkit-mask: var(--mask);
+                    mask: var(--mask);
+          
+}
